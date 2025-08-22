@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>EduBot</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="chat-card">
+    <header>🎓 EduBot - Training Institute</header>
+    <div class="messages"></div>
+    <div class="composer">
+      <input id="user-input" type="text" placeholder="Type your message..." />
+      <button id="send-btn">Send</button>
+    </div>
+    <div class="hint">Ask me about Python, Data Science, ML, AI/ML, or Generative AI courses.</div>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
+<script>
+  document.getElementById('send-btn').addEventListener('click', function() {
+    const input = document.getElementById('user-input');
+    const message = input.value.trim();
+    if (message) {
+      // Add user message to chat
+      const messagesDiv = document.querySelector('.messages');
+      messagesDiv.innerHTML += `<div class="user-message">${message}</div>`;
+      input.value = '';
+
+      // Simulate bot response
+      setTimeout(() => {
+        messagesDiv.innerHTML += `<div class="bot-message">You said: ${message}</div>`;
+        messagesDiv.scrollTop = messagesDiv.scrollHeight; // Scroll to bottom
+      }, 500);
+    }
+  });
